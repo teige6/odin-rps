@@ -30,30 +30,56 @@ function getHumanChoice () {
 }
 
 
-let humanScore = 0;
-let computerScore = 0;
+
+function playRound (humanChoice, computerChoice) {
+    if ((humanChoice === "rock" && computerChoice === "scissors") || 
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")) 
+    {
+        return "human";
+    } else if (humanChoice === computerChoice) {
+        return "tie";
+    } else {
+        return "computer";
+    }
+}
 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-
-alert(playRound(humanSelection, computerSelection));
 
 
 function playGame () {
-    function playRound (humanChoice, computerChoice) {
-        if ((humanChoice === "rock" && computerChoice === "scissors") || 
-            (humanChoice === "paper" && computerChoice === "rock") ||
-            (humanChoice === "scissors" && computerChoice === "paper")) 
-        {
-            return "Congrats Human! You Won";
-        } else if (humanChoice === computerChoice) {
-            return "It's a tie, try again.";
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        const result = playRound(humanSelection, computerSelection);
+
+        if (result === "human") {
+            humanScore++;
+            alert(`Congrats Human, you won this round: ${humanSelection} vs Computer: ${computerSelection}`);
+        } else if (result === "computer") {
+            computerScore++;
+            alert(`Congrats Computer, you are the winner: ${computerSelection} vs Human: ${humanSelection}`);
         } else {
-            return "Congrats Computer! You Won.";
+            alert(`It's a tie! Both chose ${humanSelection}`);
         }
     }
+
+
+    if (humanScore > computerScore) {
+        alert("Human is the winner! Congrats human, you are one fly player!");
+    } else if (computerScore > humanScore) {
+        alert("Computer you are the winner, congrats pc and valiant effort human.");
+    } else {
+        alert("It's a tie, this is truly unacceptable, please play again.");
+    }
+
 }
+
+
+playGame();
 
 
