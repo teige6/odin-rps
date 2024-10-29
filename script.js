@@ -3,16 +3,67 @@ const choices = ['rock', 'paper', 'scissors'];
 const playerDisplay = document.getElementById("playerDisplay");
 const computerDisplay = document.getElementById("computerDisplay");
 const resultDisplay = document.getElementById("resultDisplay");
+const playerScoreDisplay = document.getElementsByClassName("plyScore")[0];
+const computerScoreDislay = document.getElementsByClassName("compScore")[0];
+
+let playerScore = 0;
+let computerScore = 0;
 
 
 function playGame(playerSelection) {
     const computerSelection = choices[Math.floor(Math.random() * 3)];
-    
+
     let result = "";
 
-    
+    if(playerSelection === computerSelection) {
+        result = "It's a TIE!";
+    } else {
+        switch (playerSelection) {
+            case "rock":
+                if (computerSelection === "scissors") {
+                    result = "YOU WIN!";
+                    playerScore += 1;
+                } else {
+                    result = "YOU LOSE!";
+                    computerScore +=1;
+                }
+                break;
+            case "paper":
+                if (computerSelection === "rock") {
+                    result = "YOU WIN!";
+                    playerScore += 1;
+                } else {
+                    result = "YOU LOSE!";
+                    computerScore +=1;
+                }
+                break;
+            case "scissors":
+                if (computerSelection === "paper") {
+                    result = "YOU WIN!";
+                    playerScore += 1;
+                } else {
+                    result = "YOU LOSE!";
+                    computerScore +=1;
+                }
+                break;
+        }
+    }
+
+
+    playerDisplay.textContent = `PLAYER: ${playerSelection}`;
+    computerDisplay.textContent = `COMPUTER: ${computerSelection}`;
+    resultDisplay.textContent = result;
+    playerScoreDisplay.textContent = `${playerScore}`;
+    computerScoreDislay.textContent = `${computerScore}`;
 }
- 
+
+
+function clearGame () {
+    playerScoreDisplay.textContent = 0;
+    computerScoreDislay.textContent = 0;
+}
+
+
 
 
 

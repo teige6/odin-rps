@@ -5,19 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
         <h1>Rock/Paper/Scissors</h1>
 
+        <div class="btn-container">
         <button onclick="playGame('rock')">Rock</button>
         <button onclick="playGame('paper')">Paper</button>
         <button onclick="playGame('scissors')">scissors</button>
-
+        </div>
+    
+        <div class="display-container">
         <div id="playerDisplay">Player: </div>
         <div id="computerDisplay">Computer: </div>
         <div id="resultDisplay"></div>
+        </div>
+        
+
+        <div class="score-container">
+            <div id="compScrTitle">Computer</div>
+            <div class="compScore">0</div>
+            <div class="plyScore">0</div>
+            <div id="plyScrTitle">Player</div>
+        </div>
+
+        <button onclick="clearGame()" class="clear">CLEAR</button>
     </div>
 </body>
 </html>
